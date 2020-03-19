@@ -12,10 +12,12 @@ let jitter = 0.0;
 var frames = 10;
 let mouseBoxx;
 let mouseBoxy;
+let ballerina
 
 function setup(){
   createCanvas(1810, 900, WEBGL);
   vid = createVideo(['assets/AIDANCING.mp4']);
+  ballerina = loadModel('assets/ballerina.obj');
   
   for (let i = 0; i < howManydancingvids; i++){
   dancingvids[i] = new dancingvid();
@@ -44,7 +46,18 @@ function toggleVid() {
 function draw(){
  // background(0)
   //image(vid, 1810, 900);
-image(vid, 100, 900, 50, 80);
+image(vid, 100, 100, 200, 200);
+image(vid, -500, -200, 200, 200);
+image(vid, -910, 160, 500, 300);
+
+push();
+translate(width/2, height/2);
+scale(3);
+model(ballerina);
+pop();
+
+
+
   //noCursor();
   for (let i = 0; i < howManydancingvids; i++){
     dancingvids[i].move();
@@ -66,8 +79,8 @@ class dancingvid {
   constructor(){
     this.x = width;
     this.y = height;
-    this.xspeed = random(0,5);
-    this.yspeed = random(0,5);
+    this.xspeed = (0,5);
+    this.yspeed = (0,5);
     this.visible = false;
 
   }
@@ -75,11 +88,15 @@ class dancingvid {
     if (this.visible){
             //imageMode(CENTER);
    image(vid, this.x, this.y, 750, 705);
-rotateY(frameCount * .01);
+//rotateY(frameCount * .01);
 translate(-900, -900, 10)
 
    image(vid, this.x, this.y, 750, 705);
-rotateY(frameCount * .01);
+//rotateY(frameCount * .01);
+translate(-900, -900, 10)
+
+ image(vid, this.x, this.y, 750, 705);
+//rotateY(frameCount * .01);
 translate(-900, -900, 10)
 
 
