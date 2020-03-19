@@ -17,7 +17,7 @@ let ballerina
 function setup(){
   createCanvas(1810, 900, WEBGL);
   vid = createVideo(['assets/AIDANCING.mp4']);
-  ballerina = loadModel('assets/ballerina.obj');
+  ballerina = loadModel(['assets/ballerina.obj']);
   
   for (let i = 0; i < howManydancingvids; i++){
   dancingvids[i] = new dancingvid();
@@ -44,14 +44,22 @@ function toggleVid() {
 
 }
 function draw(){
- // background(0)
-  //image(vid, 1810, 900);
+  push(); 
+  noStroke();
+  rotateX(100);
+  rotateY(100);
+  rotateZ(100);
+  scale(20);
+    translate(2, 2, 2);
+  model(ballerina);
+  pop(); 
+
 image(vid, 100, 100, 200, 200);
 image(vid, -500, -200, 200, 200);
 image(vid, -910, 160, 500, 300);
 
 push();
-translate(width/2, height/2);
+translate(mouseX, mouseY);
 scale(3);
 model(ballerina);
 pop();
